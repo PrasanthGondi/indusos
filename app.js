@@ -7,7 +7,7 @@ const cors = require("cors");
 const app = express();
 const dbpath = path.join(__dirname, "app.db");
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:3004" }));
+app.use(cors({ origin: "*" }));
 //app.use(bodyParser.urlencoded({ extended: true }));
 let db = null;
 
@@ -34,7 +34,7 @@ app.post("/post", async (request, response) => {
   const { inputValue } = request.body;
   const query1 = `INSERT INTO emojiTable(value) values ('${inputValue}')`;
   const dbQuery1 = await db.run(query1);
-  response.send(request.body, inputValue);
+  response.send(request.body);
 });
 
 app.get("/list", async (request, response) => {
