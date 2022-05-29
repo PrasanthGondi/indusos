@@ -13,7 +13,7 @@ class Components extends Component {
   SumbitButton = async () => {
     const { in1 } = this.state;
     const inputvalue = { inputValue: in1 };
-    const url = "http://localhost:3005/post";
+    const url = "https://emojitextindusos.herokuapp.com/";
     const options = {
       method: "POST",
       body: JSON.stringify(inputvalue),

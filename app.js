@@ -2,12 +2,12 @@ const express = require("express");
 const sqlite3 = require("sqlite3");
 const { open } = require("sqlite");
 const path = require("path");
-//const cors = require("cors");
+const cors = require("cors");
 //const bodyParser = require("body-parser");
 const app = express();
 const dbpath = path.join(__dirname, "app.db");
 app.use(express.json());
-//app.use(cors());
+app.use(cors());
 //app.use(bodyParser.urlencoded({ extended: true }));
 let db = null;
 
