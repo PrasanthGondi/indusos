@@ -3,12 +3,13 @@ const sqlite3 = require("sqlite3");
 const { open } = require("sqlite");
 const path = require("path");
 const cors = require("cors");
-//const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const app = express();
 const dbpath = path.join(__dirname, "app.db");
 app.use(express.json());
 app.use(cors({ origin: "*" }));
-//app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 let db = null;
 
 const initializeDBAndServer = async () => {
@@ -31,7 +32,7 @@ initializeDBAndServer();
 app.post("/post", async (request, response) => {
   response.set("Access-Control-Allow-Origin", "*");
   console.log(request.body);
-  const { inputValue } = request.body;
+  const inputValue = request.body.inputValue;
   const query1 = `INSERT INTO emojiTable(value) values ('${inputValue}')`;
   const dbQuery1 = await db.run(query1);
   response.send(request.body);
