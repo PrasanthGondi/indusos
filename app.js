@@ -33,7 +33,7 @@ app.post("/post", async (request, response) => {
   const { inputValue } = request.body;
   const query1 = `INSERT INTO emojiTable(value) values ('${inputValue}')`;
   const dbQuery1 = await db.run(query1);
-  response.send(dbQuery1);
+  response.send(inputValue);
 });
 
 app.get("/list", async (request, response) => {
