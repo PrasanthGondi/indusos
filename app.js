@@ -45,6 +45,7 @@ app.get("/list", async (request, response) => {
 app.delete("/", async (request, response) => {
   const query1 = "DELETE FROM emojiTable";
   const dbQuery1 = await db.run(query1);
+  response.send("Deleted");
 });
 
 module.exports = app;
